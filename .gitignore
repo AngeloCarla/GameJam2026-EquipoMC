@@ -1,0 +1,26 @@
+# Archivos específicos de Godot 4
+.godot/
+/android/
+
+# Binarios y exportaciones
+bin/
+build/
+export/
+
+# Archivos temporales y de importación
+*.tmp
+*.import
+
+# Configuración local del editor
+.editor_hint
+
+# Archivos de Mono/C#
+.mono/
+*.sln
+*.csproj
+*.pdb
+**/bin/
+**/obj/
+
+# Logs y volcados de memoria
+*.log
