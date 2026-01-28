@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://mtaopuuatyh2"]
+
+[ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://PlayerMovement.cs" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_wtcfe")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+offset_left = 121.0
+offset_right = 214.0
+offset_bottom = 97.0
+color = Color(0, 1, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="ObjetoPrueba" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
