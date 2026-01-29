@@ -8,9 +8,10 @@
 script = ExtResource("1_wtcfe")
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
-offset_left = 121.0
-offset_right = 214.0
-offset_bottom = 97.0
+offset_left = 101.0
+offset_top = 151.0
+offset_right = 103.0
+offset_bottom = 153.0
 color = Color(0, 1, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -18,5 +19,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 
 [node name="ObjetoPrueba" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 105.0
+offset_top = 148.0
+offset_right = 109.0
+offset_bottom = 154.0
