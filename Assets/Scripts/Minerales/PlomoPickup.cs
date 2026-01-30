@@ -3,13 +3,13 @@ using System;
 
 public partial class PlomoPickup : StaticBody2D
 {
-	[Export] private float durationEffect = 5f; // Duracion del efecto	
+	[Export] private float durationEffect = 8f; // Duracion del efecto	
 	public void Interact(Player player)
 	{
 		GD.Print("¡Encontraste PLOMO! Sirve para protegerse de los gases toxicos");
 		player.ActivateShield(durationEffect);
 
-		PoofEffect();
+        PoofEffect();
 	}
 
 	private void PoofEffect()
