@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccfisiwr3nmqw"]
+
+[ext_resource type="Script" uid="uid://cefv2j3odhkqi" path="res://Assets/Scripts/Minerales/PlataPickup.cs" id="1_14ryb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tx2gc"]
+
+[node name="PlataPickup" type="StaticBody2D" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("1_14ryb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.17979443, 0.17980179, 0.043961346, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tx2gc")
