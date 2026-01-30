@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://mtaopuuatyh2"]
+[gd_scene load_steps=10 format=3 uid="uid://mtaopuuatyh2"]
 
 [ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/Player.cs" id="1_pre2s"]
 [ext_resource type="PackedScene" uid="uid://degvlt8gt8wac" path="res://Assets/Scenes/Minerales/mena.tscn" id="2_15at3"]
+[ext_resource type="PackedScene" uid="uid://ccfisiwr3nmqw" path="res://Assets/Scenes/Minerales/plataPickup.tscn" id="3_3b2lm"]
 [ext_resource type="PackedScene" uid="uid://b1hi806ifcw72" path="res://Assets/Scenes/Minerales/plomoPickup.tscn" id="4_340hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
@@ -9,6 +10,12 @@ size = Vector2(93, 97)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ja728"]
 radius = 89.08984
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b2lm"]
+bg_color = Color(0.5727102, 0.26229218, 0.25814936, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_340hg"]
+bg_color = Color(0.43782187, 0.62670094, 0.17443877, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(1138, 38)
@@ -19,14 +26,13 @@ size = Vector2(1138, 38)
 position = Vector2(0, -62)
 slide_on_ceiling = false
 script = ExtResource("1_pre2s")
-currentHealth = 60.0
+currentHealth = 100.0
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
 offset_left = -46.0
 offset_top = -47.0
 offset_right = 47.0
 offset_bottom = 50.0
-color = Color(0, 1, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -54,6 +60,23 @@ theme_override_font_sizes/font_size = 14
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HealthBar" type="ProgressBar" parent="CharacterBody2D"]
+offset_left = -179.0
+offset_top = -185.0
+offset_right = 181.0
+offset_bottom = -158.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3b2lm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_340hg")
+
+[node name="EffectLabel" type="Label" parent="CharacterBody2D"]
+visible = false
+offset_left = -71.0
+offset_top = -215.0
+offset_right = 72.0
+offset_bottom = -192.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-2, 97)
 
@@ -62,17 +85,18 @@ offset_left = -565.0
 offset_top = -50.0
 offset_right = 573.0
 offset_bottom = -11.0
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(4, -31)
 shape = SubResource("RectangleShape2D_0e48y")
 
-[node name="Mena" parent="." instance=ExtResource("2_15at3")]
+[node name="MenaPlata" parent="." instance=ExtResource("2_15at3")]
 position = Vector2(-235, 21)
-pickupScene = ExtResource("4_340hg")
-tipoMineral = "plomo"
+pickupScene = ExtResource("3_3b2lm")
 
-[node name="Mena2" parent="." instance=ExtResource("2_15at3")]
+[node name="MenaPlomo" parent="." instance=ExtResource("2_15at3")]
 position = Vector2(289, 21)
 pickupScene = ExtResource("4_340hg")
+tipoMineral = "plomo"

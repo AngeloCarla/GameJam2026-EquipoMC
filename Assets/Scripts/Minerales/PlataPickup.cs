@@ -3,7 +3,7 @@ using System;
 
 public partial class PlataPickup : StaticBody2D
 {
-    [Export] private float healAmount = 20f; // Vida que da
+    [Export] private float healAmount = 10f; // Vida que da
 
     public void Interact(Player player)
     {
