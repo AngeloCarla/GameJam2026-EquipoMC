@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://mtaopuuatyh2"]
 
-[ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/PlayerMovement.cs" id="1_ja728"]
+[ext_resource type="Script" uid="uid://c5scy4yo1fcc0" path="res://Assets/Scripts/Player/PlayerMovement.cs" id="1_ja728"]
 [ext_resource type="Script" uid="uid://cvs0cbcr85snf" path="res://Assets/Scenes/area_2d.gd" id="2_8t2v2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
