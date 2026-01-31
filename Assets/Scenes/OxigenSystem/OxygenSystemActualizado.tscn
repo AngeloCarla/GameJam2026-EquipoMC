@@ -75,6 +75,7 @@ offset_bottom = -158.0
 theme_override_styles/background = SubResource("StyleBoxFlat_3b2lm")
 theme_override_styles/fill = SubResource("StyleBoxFlat_340hg")
 value = 100.0
+show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="EffectLabel" type="Label" parent="CharacterBody2D"]
@@ -119,6 +120,7 @@ offset_left = 326.0
 offset_top = -149.0
 offset_right = 476.0
 offset_bottom = 1.0
+color = Color(0.6817665, 0.84894675, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GasZone"]
@@ -136,6 +138,7 @@ offset_bottom = 430.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_dtwtg")
 step = 0.001
 value = 100.0
+fill_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="GasZone" to="GasZone" method="_on_body_entered"]
