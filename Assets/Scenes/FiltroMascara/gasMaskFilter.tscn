@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnmj4imqfdblg"]
+
+[ext_resource type="Script" uid="uid://cr5eghd8m7suy" path="res://Assets/Scripts/FiltroMascara/GasMaskFilter.cs" id="1_bhhx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cdj4"]
+
+[node name="GasMaskFilter" type="StaticBody2D" groups=["interactable"]]
+collision_layer = 12
+script = ExtResource("1_bhhx5")
+
+[node name="ColorRect" type="ColorRect" parent="." groups=["interactable"]]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.40232074, 0.00096646545, 0.5646212, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4cdj4")
