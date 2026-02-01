@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://degvlt8gt8wac" path="res://Assets/Scenes/Minerales/mena.tscn" id="2_77lt2"]
 [ext_resource type="PackedScene" uid="uid://ccfisiwr3nmqw" path="res://Assets/Scenes/Minerales/plataPickup.tscn" id="3_6pmac"]
 [ext_resource type="PackedScene" uid="uid://b1hi806ifcw72" path="res://Assets/Scenes/Minerales/plomoPickup.tscn" id="4_oh2mw"]
-[ext_resource type="Script" uid="uid://cvs0cbcr85snf" path="res://Assets/Scenes/area_2d.gd" id="5_60j1w"]
+[ext_resource type="Script" path="res://Assets/Scenes/area_2d.gd" id="5_60j1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
 size = Vector2(93, 97)
