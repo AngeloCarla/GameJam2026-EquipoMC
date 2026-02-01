@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://mtaopuuatyh2"]
+[gd_scene load_steps=11 format=3 uid="uid://mtaopuuatyh2"]
 
 [ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/Player.cs" id="1_pre2s"]
 [ext_resource type="PackedScene" uid="uid://degvlt8gt8wac" path="res://Assets/Scenes/Minerales/mena.tscn" id="2_15at3"]
 [ext_resource type="PackedScene" uid="uid://ccfisiwr3nmqw" path="res://Assets/Scenes/Minerales/plataPickup.tscn" id="3_3b2lm"]
 [ext_resource type="PackedScene" uid="uid://b1hi806ifcw72" path="res://Assets/Scenes/Minerales/plomoPickup.tscn" id="4_340hg"]
+[ext_resource type="PackedScene" uid="uid://cnmj4imqfdblg" path="res://Assets/Scenes/FiltroMascara/gasMaskFilter.tscn" id="5_340hg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
 size = Vector2(93, 97)
@@ -26,7 +27,6 @@ size = Vector2(1138, 38)
 position = Vector2(0, -62)
 slide_on_ceiling = false
 script = ExtResource("1_pre2s")
-currentHealth = 100.0
 
 [node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
 offset_left = -46.0
@@ -100,3 +100,6 @@ pickupScene = ExtResource("3_3b2lm")
 position = Vector2(289, 21)
 pickupScene = ExtResource("4_340hg")
 tipoMineral = "plomo"
+
+[node name="GasMaskFilter" parent="." instance=ExtResource("5_340hg")]
+position = Vector2(-324, 11)

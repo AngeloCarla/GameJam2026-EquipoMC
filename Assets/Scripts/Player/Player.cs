@@ -4,17 +4,26 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
+    [ExportGroup("Oxígeno")]
+    [Export] private int maxOxygen = 100;   // cantidad máxima
+    private float currentOxygen;              // oxígeno actual
+    private float walkDrainRate = 1f;   // oxígeno por segundo en reposo o caminando
+    private float runDrainMultiplier = 4f; // multiplicador si corre
+    private float oxygenDrainMultiplier = 1f; // multiplicador normal 
+
+    private ProgressBar OxygenBar;
+    
     // ── T2: Movimiento del Jugador ──
     // ── MOVIMIENTO ──
     [ExportGroup("Movimiento")]
-	[Export] private float walkSpeed = 300f; // Velocidad normal
-	[Export] private float runSpeed = 600f; // Velocidad corriendo (shift)
+    [Export] private float walkSpeed = 300f; // Velocidad normal
+    [Export] private float runSpeed = 600f; // Velocidad corriendo (shift)
 
     // ── SALTO ──
     [ExportGroup("Salto")]
-	[Export] private float jumpForce = -500f; // Fuerza de salto
-	[Export] private float runJumpMultiplier = 1.5f; // x1.5 mas alto el salto al correr
-	[Export] private float runJumpBoostX = 200f; // Impulso extra al saltar
+    [Export] private float jumpForce = -500f; // Fuerza de salto
+    [Export] private float runJumpMultiplier = 1.5f; // x1.5 mas alto el salto al correr
+    [Export] private float runJumpBoostX = 200f; // Impulso extra al saltar
 
     // ── FISICA ──
     [ExportGroup("Fisica")]
@@ -30,7 +39,6 @@ public partial class Player : CharacterBody2D
     private bool isDeadVisual = false; // Nomas por el color
 
     // ── MINERALES Y EFECTOS ──
-    [Export] private float pickupHealthGain = 20f; // Vida que da el mineral (Plata)
     private bool isShielded = false;  // Escudo temporal (Plomo)
     private Label effectLabel; // Contador del Escudo
     private float shieldTimeLeft = 0f; // Tiempo restante
@@ -43,8 +51,22 @@ public partial class Player : CharacterBody2D
     // ── TESTEO ──
     private Color originalModulate = Colors.White; // Color original
 
-    public override void _Ready() // Start()
+    public override void _Ready()
     {
+        currentOxygen = maxOxygen;
+
+        OxygenBar = GetNodeOrNull<ProgressBar>("../HUD/OxygenBar");
+
+        if (OxygenBar != null)
+        {
+            OxygenBar.MaxValue = maxOxygen;
+            OxygenBar.Value = currentOxygen;
+        }
+        else
+        {
+            GD.Print("ERROR: No se encontró OxygenBar");
+        }
+
         // ── RADAR ──
         radar = GetNodeOrNull<Area2D>("Area2D");  // Usa GetNodeOrNull referenciar el nodo
         radar.BodyEntered += OnRadarEnter;
@@ -58,6 +80,7 @@ public partial class Player : CharacterBody2D
             interactPrompt.Visible = false;  // Asegura que empiece oculto
 
         // ── VIDA ──
+        currentHealth = maxHealth;
         healthBar = GetNodeOrNull<ProgressBar>("HealthBar");
         if (healthBar != null)
         {
@@ -77,23 +100,23 @@ public partial class Player : CharacterBody2D
     }
 
     public override void _PhysicsProcess(double delta)
-	{
+    {
         // ── MUERTE ─
         if (isDead)
         {
-                Velocity = Vector2.Zero;
-                // Reset con R
-                if (Input.IsActionJustPressed("reset_game"))
-                {
-                    ResetPlayer();
-                }
-                return;
+            Velocity = Vector2.Zero;
+            // Reset con R
+            if (Input.IsActionJustPressed("reset_game"))
+            {
+                ResetPlayer();
+            }
+            return;
         }
 
         // ── ENTRADA DEL JUGADOR ──
         Vector2 dir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down"); //(Input.GetVector maneja normalized auto)
         bool isRunning = Input.IsKeyPressed(Key.Shift); // Detecta si el jugador está presionando Shift
-        // la velocidad actual: con shift corre, sin camina
+                                                        // la velocidad actual: con shift corre, sin camina
         float currentSpeed = isRunning ? runSpeed : walkSpeed; // condicion ? verdadero : falso
 
         // Aplicamos velocidad horizontal basada en input actual
@@ -101,20 +124,20 @@ public partial class Player : CharacterBody2D
 
         // ── GRAVEDAD (si no esta en el suelo) ──
         if (!IsOnFloor())
-		{
-			Velocity += Vector2.Down * gravity * (float)delta;
-		}
+        {
+            Velocity += Vector2.Down * gravity * (float)delta;
+        }
 
         // ── SALTO ──
         if (IsOnFloor() && Input.IsActionJustPressed("Jump"))
-		{
-			float jumpY = jumpForce; // Altura base
+        {
+            float jumpY = jumpForce; // Altura base
             Vector2 newVel = Velocity; // Copia de Velocidad
 
-			// Si corre al saltar
-			if (isRunning)
-			{
-				jumpY *= runJumpMultiplier; // Salto mas alto si estas corriendo
+            // Si corre al saltar
+            if (isRunning)
+            {
+                jumpY *= runJumpMultiplier; // Salto mas alto si estas corriendo
 
                 // Impulso horizontal basado en la velocidad actual
                 float boostDir = Mathf.Sign(Velocity.X);  // -1, 0 o +1 segun hacia donde ibas
@@ -126,6 +149,9 @@ public partial class Player : CharacterBody2D
             Velocity = newVel; // Asignamos todo de una vez
 
         }
+
+        // ── Oxígeno ──
+        UpdateOxygen((float)delta);
 
         // ── CONTADOR EFECTO PLOMO (Escudo) ──
         if (isShielded && shieldTimeLeft > 0)
@@ -150,12 +176,12 @@ public partial class Player : CharacterBody2D
         }
 
         // ── RESET ──
-  
-            if (Input.IsActionJustPressed("reset_game"))
-            {
-                ResetPlayer();
-            }
-        
+
+        if (Input.IsActionJustPressed("reset_game"))
+        {
+            ResetPlayer();
+        }
+
         // Aplicar movimiento y manejar colisiones
         MoveAndSlide();
 
@@ -174,6 +200,8 @@ public partial class Player : CharacterBody2D
             {
                 plomo.Interact(this);
             }
+            else if (currentInteractable is GasMaskFilter filter)
+                filter.Interact(this);
         }
     }
 
@@ -194,12 +222,14 @@ public partial class Player : CharacterBody2D
                     promptText = "E para usar";
                 else if (body is PlomoPickup)
                     promptText = "E para usar";
+                else if (body is GasMaskFilter)
+                    promptText = "E para usar";
 
                 interactPrompt.Text = promptText; // Asigna el texto
                 interactPrompt.Visible = true; // Muetra en pantalla
             }
         }
-    }   
+    }
     private void OnRadarExit(Node2D body)
     {
         if (body == currentInteractable)
@@ -255,6 +285,47 @@ public partial class Player : CharacterBody2D
 
         UpdateHealthDisplay();
     }
+    // Oxigeno
+    public void UpdateOxygen(float delta)
+    {
+        float drain = walkDrainRate * oxygenDrainMultiplier;
+        if (Input.IsKeyPressed(Key.Shift)) // si corre
+            drain *= runDrainMultiplier;
+
+        currentOxygen -= drain * (float)delta;
+        currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
+
+        if (OxygenBar != null)
+            OxygenBar.Value = currentOxygen;
+
+        GD.Print($"{currentOxygen}");
+    }
+
+    // Filtro de oxigeno
+    public void AddOxygen(float amount)
+    {
+        currentOxygen = Mathf.Min(currentOxygen + amount, maxOxygen);
+        FlashColor(Colors.Lime, 1f);
+
+        if (effectLabel != null)
+        {
+            effectLabel.Text = $"+{amount} de oxigeno";
+            effectLabel.Modulate = Colors.Lime;
+            effectLabel.Visible = true;
+
+            var tween = CreateTween();
+            tween.TweenInterval(1f);  // Tiempo visible
+            tween.TweenProperty(effectLabel, "modulate:a", 0f, 0.5f);  // Fade out
+
+            // Desaparece el texto
+            tween.TweenCallback(Callable.From(() =>
+            {
+                effectLabel.Visible = false;
+                effectLabel.Modulate = Colors.White;
+            }));
+        }
+    }
+
     // Testeo rapido, cambio de color: ROJO PLATA, AZUL PLOMO
     public void FlashColor(Color flashColor, float duration)
     {
@@ -338,6 +409,7 @@ public partial class Player : CharacterBody2D
         isDead = false;
         isDeadVisual = false;
         currentHealth = maxHealth;  // Vida llena
+        currentOxygen = maxOxygen;
         isShielded = false;
         shieldTimeLeft = 0f;
 
@@ -361,5 +433,11 @@ public partial class Player : CharacterBody2D
 
         UpdateHealthDisplay();
         GD.Print("¡REVIVIDO!");
+    }
+
+    // Para obtener el valor del multiplicador
+    public void SetOxygenDrainMultiplier(float multiplier)
+    {
+        oxygenDrainMultiplier = Mathf.Max(multiplier, 1f);
     }
 }
