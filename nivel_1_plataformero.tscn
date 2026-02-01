@@ -1,0 +1,397 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvacq8ufkd0ht"]
+
+[ext_resource type="PackedScene" uid="uid://mtaopuuatyh2" path="res://node_2d.tscn" id="1_1slj1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kidm0"]
+size = Vector2(480, 36.125)
+
+[sub_resource type="TileSet" id="TileSet_ksqls"]
+
+[node name="Nivel1_Plataformero" type="Node2D"]
+
+[node name="Plataforma1" type="StaticBody2D" parent="."]
+position = Vector2(216, 51)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma1"]
+position = Vector2(-73.75, 599)
+shape = SubResource("RectangleShape2D_kidm0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Plataforma1"]
+position = Vector2(-17, 417)
+shape = SubResource("RectangleShape2D_kidm0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Plataforma1"]
+position = Vector2(123, 499)
+shape = SubResource("RectangleShape2D_kidm0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Plataforma1"]
+position = Vector2(282, 90)
+shape = SubResource("RectangleShape2D_kidm0")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Plataforma1"]
+position = Vector2(271, 256)
+shape = SubResource("RectangleShape2D_kidm0")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Plataforma1"]
+position = Vector2(459, 585)
+shape = SubResource("RectangleShape2D_kidm0")
+
+[node name="ColorRect" type="ColorRect" parent="Plataforma1"]
+offset_left = -215.0
+offset_top = 585.0
+offset_right = 926.0
+offset_bottom = 595.0
+
+[node name="ColorRect2" type="ColorRect" parent="Plataforma1"]
+offset_left = -217.0
+offset_top = 565.0
+offset_right = -87.0
+offset_bottom = 586.0
+
+[node name="ColorRect4" type="ColorRect" parent="Plataforma1"]
+offset_left = -215.0
+offset_top = 481.0
+offset_right = -120.0
+offset_bottom = 552.0
+
+[node name="ColorRect7" type="ColorRect" parent="Plataforma1"]
+offset_left = -73.0
+offset_top = 564.0
+offset_right = -54.0
+offset_bottom = 567.0
+
+[node name="ColorRect8" type="ColorRect" parent="Plataforma1"]
+offset_left = -40.0
+offset_top = 562.0
+offset_right = -21.0
+offset_bottom = 565.0
+
+[node name="ColorRect9" type="ColorRect" parent="Plataforma1"]
+offset_left = 28.0
+offset_top = 549.0
+offset_right = 47.0
+offset_bottom = 552.0
+
+[node name="ColorRect28" type="ColorRect" parent="Plataforma1"]
+offset_left = 328.0
+offset_top = 542.0
+offset_right = 347.0
+offset_bottom = 545.0
+
+[node name="ColorRect39" type="ColorRect" parent="Plataforma1"]
+offset_left = 606.0
+offset_top = 541.0
+offset_right = 625.0
+offset_bottom = 544.0
+
+[node name="ColorRect40" type="ColorRect" parent="Plataforma1"]
+offset_left = 528.0
+offset_top = 513.0
+offset_right = 547.0
+offset_bottom = 516.0
+
+[node name="ColorRect42" type="ColorRect" parent="Plataforma1"]
+offset_left = 557.0
+offset_top = 525.0
+offset_right = 576.0
+offset_bottom = 528.0
+
+[node name="ColorRect41" type="ColorRect" parent="Plataforma1"]
+offset_left = 505.0
+offset_top = 491.0
+offset_right = 524.0
+offset_bottom = 494.0
+
+[node name="ColorRect29" type="ColorRect" parent="Plataforma1"]
+offset_left = 296.0
+offset_top = 554.0
+offset_right = 315.0
+offset_bottom = 557.0
+
+[node name="ColorRect11" type="ColorRect" parent="Plataforma1"]
+offset_left = -1.0
+offset_top = 537.0
+offset_right = 18.0
+offset_bottom = 540.0
+
+[node name="ColorRect20" type="ColorRect" parent="Plataforma1"]
+offset_left = 135.0
+offset_top = 465.0
+offset_right = 160.0
+offset_bottom = 468.0
+
+[node name="ColorRect32" type="ColorRect" parent="Plataforma1"]
+offset_left = 280.0
+offset_top = 425.0
+offset_right = 305.0
+offset_bottom = 428.0
+
+[node name="ColorRect34" type="ColorRect" parent="Plataforma1"]
+offset_left = 323.0
+offset_top = 411.0
+offset_right = 348.0
+offset_bottom = 414.0
+
+[node name="ColorRect35" type="ColorRect" parent="Plataforma1"]
+offset_left = 273.0
+offset_top = 398.0
+offset_right = 298.0
+offset_bottom = 401.0
+
+[node name="ColorRect46" type="ColorRect" parent="Plataforma1"]
+offset_left = 294.0
+offset_top = 283.0
+offset_right = 337.0
+offset_bottom = 288.0
+
+[node name="ColorRect55" type="ColorRect" parent="Plataforma1"]
+offset_left = 190.0
+offset_top = 52.0
+offset_right = 275.0
+offset_bottom = 65.0
+
+[node name="ColorRect57" type="ColorRect" parent="Plataforma1"]
+offset_left = 290.0
+offset_top = 52.0
+offset_right = 375.0
+offset_bottom = 65.0
+
+[node name="ColorRect58" type="ColorRect" parent="Plataforma1"]
+offset_left = 399.0
+offset_top = 52.0
+offset_right = 484.0
+offset_bottom = 65.0
+
+[node name="ColorRect56" type="ColorRect" parent="Plataforma1"]
+offset_left = 88.0
+offset_top = 55.0
+offset_right = 163.0
+offset_bottom = 65.0
+
+[node name="ColorRect47" type="ColorRect" parent="Plataforma1"]
+offset_left = 243.0
+offset_top = 289.0
+offset_right = 268.0
+offset_bottom = 292.0
+
+[node name="ColorRect33" type="ColorRect" parent="Plataforma1"]
+offset_left = 321.0
+offset_top = 443.0
+offset_right = 346.0
+offset_bottom = 446.0
+
+[node name="ColorRect24" type="ColorRect" parent="Plataforma1"]
+offset_left = -35.0
+offset_top = 394.0
+offset_right = -10.0
+offset_bottom = 397.0
+
+[node name="ColorRect25" type="ColorRect" parent="Plataforma1"]
+offset_left = 18.0
+offset_top = 400.0
+offset_right = 45.0
+offset_bottom = 404.0
+
+[node name="ColorRect26" type="ColorRect" parent="Plataforma1"]
+offset_left = -31.0
+offset_top = 419.0
+offset_right = -6.0
+offset_bottom = 424.0
+
+[node name="ColorRect21" type="ColorRect" parent="Plataforma1"]
+offset_left = 89.0
+offset_top = 465.0
+offset_right = 116.0
+offset_bottom = 468.0
+
+[node name="ColorRect22" type="ColorRect" parent="Plataforma1"]
+offset_left = 47.0
+offset_top = 467.0
+offset_right = 78.0
+offset_bottom = 471.0
+
+[node name="ColorRect14" type="ColorRect" parent="Plataforma1"]
+offset_left = -116.0
+offset_top = 518.0
+offset_right = -97.0
+offset_bottom = 521.0
+
+[node name="ColorRect16" type="ColorRect" parent="Plataforma1"]
+offset_left = -98.0
+offset_top = 503.0
+offset_right = -79.0
+offset_bottom = 506.0
+
+[node name="ColorRect17" type="ColorRect" parent="Plataforma1"]
+offset_left = -121.0
+offset_top = 488.0
+offset_right = -102.0
+offset_bottom = 491.0
+
+[node name="ColorRect15" type="ColorRect" parent="Plataforma1"]
+offset_left = -106.0
+offset_top = 468.0
+offset_right = -86.0
+offset_bottom = 471.0
+
+[node name="ColorRect10" type="ColorRect" parent="Plataforma1"]
+offset_left = -136.0
+offset_top = 533.0
+offset_right = -15.0
+offset_bottom = 544.0
+
+[node name="ColorRect5" type="ColorRect" parent="Plataforma1"]
+offset_left = -80.0
+offset_top = 491.0
+offset_right = 508.0
+offset_bottom = 513.0
+
+[node name="ColorRect18" type="ColorRect" parent="Plataforma1"]
+offset_left = -82.0
+offset_top = 467.0
+offset_right = 38.0
+offset_bottom = 494.0
+
+[node name="ColorRect19" type="ColorRect" parent="Plataforma1"]
+offset_left = 173.0
+offset_top = 465.0
+offset_right = 317.0
+offset_bottom = 492.0
+
+[node name="ColorRect23" type="ColorRect" parent="Plataforma1"]
+offset_left = 55.0
+offset_top = 397.0
+offset_right = 281.0
+offset_bottom = 433.0
+
+[node name="ColorRect30" type="ColorRect" parent="Plataforma1"]
+offset_left = -220.0
+offset_top = -51.0
+offset_right = -120.0
+offset_bottom = 354.0
+
+[node name="ColorRect43" type="ColorRect" parent="Plataforma1"]
+offset_left = -136.0
+offset_top = 298.0
+offset_right = 229.0
+offset_bottom = 336.0
+
+[node name="ColorRect44" type="ColorRect" parent="Plataforma1"]
+offset_left = 228.0
+offset_top = 324.0
+offset_right = 351.0
+offset_bottom = 362.0
+
+[node name="ColorRect31" type="ColorRect" parent="Plataforma1"]
+offset_left = 348.0
+offset_top = 273.0
+offset_right = 420.0
+offset_bottom = 465.0
+
+[node name="ColorRect36" type="ColorRect" parent="Plataforma1"]
+offset_left = 495.0
+offset_top = 294.0
+offset_right = 567.0
+offset_bottom = 452.0
+
+[node name="ColorRect45" type="ColorRect" parent="Plataforma1"]
+offset_left = -31.0
+offset_top = 198.0
+offset_right = 396.0
+offset_bottom = 232.0
+
+[node name="ColorRect48" type="ColorRect" parent="Plataforma1"]
+offset_left = 505.0
+offset_top = 191.0
+offset_right = 879.0
+offset_bottom = 237.0
+
+[node name="ColorRect52" type="ColorRect" parent="Plataforma1"]
+offset_left = 61.0
+offset_top = 116.0
+offset_right = 344.0
+offset_bottom = 210.0
+
+[node name="ColorRect50" type="ColorRect" parent="Plataforma1"]
+offset_left = -147.0
+offset_top = 100.0
+offset_right = 693.0
+offset_bottom = 134.0
+
+[node name="ColorRect53" type="ColorRect" parent="Plataforma1"]
+offset_left = 502.0
+offset_top = 47.0
+offset_right = 783.0
+offset_bottom = 103.0
+
+[node name="ColorRect54" type="ColorRect" parent="Plataforma1"]
+offset_left = -145.0
+offset_top = 51.0
+offset_right = 73.0
+offset_bottom = 115.0
+
+[node name="ColorRect51" type="ColorRect" parent="Plataforma1"]
+offset_left = -121.0
+offset_top = -47.0
+offset_right = 873.0
+offset_bottom = -22.0
+
+[node name="ColorRect49" type="ColorRect" parent="Plataforma1"]
+offset_left = 520.0
+offset_top = 284.0
+offset_right = 786.0
+offset_bottom = 325.0
+
+[node name="ColorRect27" type="ColorRect" parent="Plataforma1"]
+offset_left = 360.0
+offset_top = 540.0
+offset_right = 586.0
+offset_bottom = 594.0
+
+[node name="ColorRect38" type="ColorRect" parent="Plataforma1"]
+offset_left = 650.0
+offset_top = 539.0
+offset_right = 876.0
+offset_bottom = 593.0
+
+[node name="ColorRect37" type="ColorRect" parent="Plataforma1"]
+offset_left = 559.0
+offset_top = 378.0
+offset_right = 797.0
+offset_bottom = 497.0
+
+[node name="ColorRect12" type="ColorRect" parent="Plataforma1"]
+offset_left = -216.0
+offset_top = 318.0
+offset_right = -191.0
+offset_bottom = 481.0
+
+[node name="ColorRect13" type="ColorRect" parent="Plataforma1"]
+offset_left = -215.0
+offset_top = 394.0
+offset_right = -30.0
+offset_bottom = 437.0
+
+[node name="ColorRect6" type="ColorRect" parent="Plataforma1"]
+offset_left = 871.0
+offset_top = -46.0
+offset_right = 944.0
+offset_bottom = 597.0
+
+[node name="ColorRect3" type="ColorRect" parent="Plataforma1"]
+offset_left = -5.0
+offset_top = 561.0
+offset_right = 287.0
+offset_bottom = 586.0
+
+[node name="MapaMina" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_ksqls")
+format = 2
+
+[node name="GameJam2026EquipoMCtilesminaTileset_png" type="Sprite2D" parent="."]
+position = Vector2(1695, 379.00003)
+scale = Vector2(1, 0.71777344)
+
+[node name="Node2D" parent="." instance=ExtResource("1_1slj1")]
+position = Vector2(192, 598)
+scale = Vector2(0.1, 0.1)
