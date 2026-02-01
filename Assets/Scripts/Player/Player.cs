@@ -13,17 +13,17 @@ public partial class Player : CharacterBody2D
 
 	private ProgressBar OxygenBar;
 
-    // ── T2: Movimiento del Jugador ──
-    // ── MOVIMIENTO ──
-    [ExportGroup("Movimiento")]
-	[Export] private float walkSpeed = 300f; // Velocidad normal
-	[Export] private float runSpeed = 600f; // Velocidad corriendo (shift)
+	// ── T2: Movimiento del Jugador ──
+	// ── MOVIMIENTO ──
+	[ExportGroup("Movimiento")]
+	[Export] private float walkSpeed = 100f; // Velocidad normal
+	[Export] private float runSpeed = 120f; // Velocidad corriendo (shift)
 
 	// ── SALTO ──
 	[ExportGroup("Salto")]
-	[Export] private float jumpForce = -300f; // Fuerza de salto
+	[Export] private float jumpForce = -200f; // Fuerza de salto
 	[Export] private float runJumpMultiplier = 1.5f; // x1.5 mas alto el salto al correr
-	[Export] private float runJumpBoostX = 200f; // Impulso extra al saltar
+	[Export] private float runJumpBoostX = 100f; // Impulso extra al saltar
 
 	// ── FISICA ──
 	[ExportGroup("Fisica")]
