@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Mena : StaticBody2D
+public partial class Mena : TileMapLayer
 {
     // El PackedScene es un PREFAB
     [Export] private PackedScene pickupScene = null;  // Asigna el mineral en Inspector

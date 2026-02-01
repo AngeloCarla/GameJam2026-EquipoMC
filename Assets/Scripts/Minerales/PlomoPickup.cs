@@ -9,14 +9,14 @@ public partial class PlomoPickup : StaticBody2D
 		GD.Print("¡Encontraste PLOMO! Sirve para protegerse de los gases toxicos");
 		player.ActivateShield(durationEffect);
 
-        PoofEffect();
+		PoofEffect();
 	}
 
 	private void PoofEffect()
 	{
-        var tween = CreateTween();
-        tween.TweenProperty(this, "scale", Vector2.One * 1.5f, 0.2f);
-        tween.Parallel().TweenProperty(this, "modulate:a", 0f, 0.3f);
-        tween.TweenCallback(Callable.From(QueueFree));
-    }
+		var tween = CreateTween();
+		tween.TweenProperty(this, "scale", Vector2.One * 1.5f, 0.2f);
+		tween.Parallel().TweenProperty(this, "modulate:a", 0f, 0.3f);
+		tween.TweenCallback(Callable.From(QueueFree));
+	}
 }
