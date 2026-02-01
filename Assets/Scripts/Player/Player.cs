@@ -12,16 +12,16 @@ public partial class Player : CharacterBody2D
 	private float oxygenDrainMultiplier = 1f; // multiplicador normal 
 
 	private ProgressBar OxygenBar;
-	
-	// ── T2: Movimiento del Jugador ──
-	// ── MOVIMIENTO ──
-	[ExportGroup("Movimiento")]
+
+    // ── T2: Movimiento del Jugador ──
+    // ── MOVIMIENTO ──
+    [ExportGroup("Movimiento")]
 	[Export] private float walkSpeed = 300f; // Velocidad normal
 	[Export] private float runSpeed = 600f; // Velocidad corriendo (shift)
 
 	// ── SALTO ──
 	[ExportGroup("Salto")]
-	[Export] private float jumpForce = -500f; // Fuerza de salto
+	[Export] private float jumpForce = -300f; // Fuerza de salto
 	[Export] private float runJumpMultiplier = 1.5f; // x1.5 mas alto el salto al correr
 	[Export] private float runJumpBoostX = 200f; // Impulso extra al saltar
 
@@ -128,6 +128,8 @@ public partial class Player : CharacterBody2D
 			Velocity += Vector2.Down * gravity * (float)delta;
 		}
 
+		// GD.Print(IsOnFloor());
+
 		// ── SALTO ──
 		if (IsOnFloor() && Input.IsActionJustPressed("Jump"))
 		{
@@ -147,7 +149,6 @@ public partial class Player : CharacterBody2D
 
 			newVel.Y = jumpY; // Aplicamos la altura del salto
 			Velocity = newVel; // Asignamos todo de una vez
-
 		}
 
 		// ── Oxígeno ──
@@ -158,14 +159,13 @@ public partial class Player : CharacterBody2D
 		{
 			shieldTimeLeft -= (float)delta;
 			if (effectLabel != null)
-				effectLabel.Text = $"Escudo: {shieldTimeLeft:F1}s";
+				effectLabel.Text = $"Proteccion: {shieldTimeLeft:F1}s";
 
 			if (shieldTimeLeft <= 0)
 			{
 				isShielded = false;
 				if (effectLabel != null)
 					effectLabel.Visible = false;
-				GD.Print("Escudo terminado");
 			}
 		}
 
@@ -247,7 +247,7 @@ public partial class Player : CharacterBody2D
 	public void Heal(float amount)
 	{
 		currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
-		FlashColor(Colors.Red, 1f);
+		// FlashColor(Colors.Red, 1f);
 		UpdateHealthDisplay();
 
 		if (effectLabel != null)
@@ -274,7 +274,7 @@ public partial class Player : CharacterBody2D
 		isShielded = true;
 		shieldTimeLeft = duration;
 
-		FlashColor(Colors.Blue, duration);
+		// FlashColor(Colors.Blue, duration);
 		GD.Print($"¡Proteccion por {duration}s!");
 
 		if (effectLabel != null)
@@ -298,14 +298,14 @@ public partial class Player : CharacterBody2D
 		if (OxygenBar != null)
 			OxygenBar.Value = currentOxygen;
 
-		GD.Print($"{currentOxygen}");
+		//GD.Print($"{currentOxygen}");
 	}
 
 	// Filtro de oxigeno
 	public void AddOxygen(float amount)
 	{
 		currentOxygen = Mathf.Min(currentOxygen + amount, maxOxygen);
-		FlashColor(Colors.Lime, 1f);
+		// FlashColor(Colors.Lime, 1f);
 
 		if (effectLabel != null)
 		{
