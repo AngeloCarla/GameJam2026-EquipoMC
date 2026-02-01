@@ -39,7 +39,6 @@ public partial class Player : CharacterBody2D
     private bool isDeadVisual = false; // Nomas por el color
 
     // ── MINERALES Y EFECTOS ──
-    private float pickupHealthGain = 20f; // Vida que da el mineral (Plata)
     private bool isShielded = false;  // Escudo temporal (Plomo)
     private Label effectLabel; // Contador del Escudo
     private float shieldTimeLeft = 0f; // Tiempo restante
@@ -201,6 +200,8 @@ public partial class Player : CharacterBody2D
             {
                 plomo.Interact(this);
             }
+            else if (currentInteractable is GasMaskFilter filter)
+                filter.Interact(this);
         }
     }
 
@@ -220,6 +221,8 @@ public partial class Player : CharacterBody2D
                 else if (body is PlataPickup)
                     promptText = "E para usar";
                 else if (body is PlomoPickup)
+                    promptText = "E para usar";
+                else if (body is GasMaskFilter)
                     promptText = "E para usar";
 
                 interactPrompt.Text = promptText; // Asigna el texto
@@ -294,7 +297,34 @@ public partial class Player : CharacterBody2D
 
         if (OxygenBar != null)
             OxygenBar.Value = currentOxygen;
-    } 
+
+        GD.Print($"{currentOxygen}");
+    }
+
+    // Filtro de oxigeno
+    public void AddOxygen(float amount)
+    {
+        currentOxygen = Mathf.Min(currentOxygen + amount, maxOxygen);
+        FlashColor(Colors.Lime, 1f);
+
+        if (effectLabel != null)
+        {
+            effectLabel.Text = $"+{amount} de oxigeno";
+            effectLabel.Modulate = Colors.Lime;
+            effectLabel.Visible = true;
+
+            var tween = CreateTween();
+            tween.TweenInterval(1f);  // Tiempo visible
+            tween.TweenProperty(effectLabel, "modulate:a", 0f, 0.5f);  // Fade out
+
+            // Desaparece el texto
+            tween.TweenCallback(Callable.From(() =>
+            {
+                effectLabel.Visible = false;
+                effectLabel.Modulate = Colors.White;
+            }));
+        }
+    }
 
     // Testeo rapido, cambio de color: ROJO PLATA, AZUL PLOMO
     public void FlashColor(Color flashColor, float duration)
