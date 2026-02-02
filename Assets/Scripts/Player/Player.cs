@@ -182,6 +182,7 @@ public partial class Player : CharacterBody2D
 			ResetPlayer();
 		}
 
+
 		// Aplicar movimiento y manejar colisiones
 		MoveAndSlide();
 
@@ -212,9 +213,11 @@ public partial class Player : CharacterBody2D
 		{
 			currentInteractable = body;
 
+
 			if (interactPrompt != null)
 			{
 				string promptText = "E para interactuar";
+
 
 				if (body is Mena)
 					promptText = "E para excavar";
@@ -292,8 +295,10 @@ public partial class Player : CharacterBody2D
 		if (Input.IsKeyPressed(Key.Shift)) // si corre
 			drain *= runDrainMultiplier;
 
+
 		currentOxygen -= drain * (float)delta;
 		currentOxygen = Mathf.Clamp(currentOxygen, 0, maxOxygen);
+
 
 		if (OxygenBar != null)
 			OxygenBar.Value = currentOxygen;
