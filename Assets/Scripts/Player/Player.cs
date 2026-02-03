@@ -203,7 +203,11 @@ public partial class Player : CharacterBody2D
 			}
 			else if (currentInteractable is GasMaskFilter filter)
 				filter.Interact(this);
-		}
+
+            currentInteractable = null;
+            if (interactPrompt != null)
+                interactPrompt.Visible = false;
+        }
 	}
 
 	// ── FUNCIONES DEL RADAR ──
@@ -217,7 +221,6 @@ public partial class Player : CharacterBody2D
 			if (interactPrompt != null)
 			{
 				string promptText = "E para interactuar";
-
 
 				if (body is Mena)
 					promptText = "E para excavar";
