@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=4 uid="uid://ty76rn4yxvfo"]
+[gd_scene load_steps=27 format=4 uid="uid://ty76rn4yxvfo"]
 
+[ext_resource type="Script" uid="uid://dw4bnfvh6v0bu" path="res://Assets/Scenes/Mapa/mapa_completo.gd" id="1_3i4hb"]
 [ext_resource type="Texture2D" uid="uid://c6c3eymade5kq" path="res://Assets/Scenes/Assets Generales/Background 1.png" id="1_6pygc"]
 [ext_resource type="Texture2D" uid="uid://byafmpk53m3qi" path="res://Assets/Scenes/Assets Generales/PJ_Idle.png" id="2_5tii6"]
 [ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/Player.cs" id="2_ep2we"]
@@ -222,7 +223,11 @@ size = Vector2(128, 65)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ay3"]
 size = Vector2(48, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2q562"]
+size = Vector2(54, 36)
+
 [node name="Mapa" type="Node2D"]
+script = ExtResource("1_3i4hb")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -376,3 +381,9 @@ offset_bottom = 3.0299969
 step = 0.001
 value = 100.0
 rounded = true
+
+[node name="ZonaSegura" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaSegura"]
+position = Vector2(437, 46)
+shape = SubResource("RectangleShape2D_2q562")
