@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://wncyppfnunsg"]
+
+[ext_resource type="PackedScene" uid="uid://mtaopuuatyh2" path="res://node_2d.tscn" id="1_4pfw2"]
+[ext_resource type="Texture2D" uid="uid://dx6w343f2ald2" path="res://piedra.png.jpeg" id="1_hrt0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrt0e"]
+size = Vector2(737.5, 83)
+
+[node name="Nivel1" type="Node2D"]
+
+[node name="Piso" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piso"]
+position = Vector2(375, 410)
+shape = SubResource("RectangleShape2D_hrt0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="Piso"]
+position = Vector2(256, 431)
+texture = ExtResource("1_hrt0e")
+
+[node name="Personaje" parent="." instance=ExtResource("1_4pfw2")]
+position = Vector2(171, 23)
