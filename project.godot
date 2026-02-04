@@ -15,6 +15,10 @@ run/main_scene="uid://ty76rn4yxvfo"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*res://Assets/Scripts/Audio/AudioManager.gd"
+
 [display]
 
 window/size/viewport_width=479
@@ -26,6 +30,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="GGJ2026"
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [global_group]
 
