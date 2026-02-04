@@ -21,7 +21,7 @@ bg_color = Color(0.43782187, 0.62670094, 0.17443877, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(1138, 38)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["player"]]
 position = Vector2(20, 2)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
