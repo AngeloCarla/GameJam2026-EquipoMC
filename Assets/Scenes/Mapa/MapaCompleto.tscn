@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=4 uid="uid://ty76rn4yxvfo"]
+[gd_scene load_steps=43 format=4 uid="uid://ty76rn4yxvfo"]
 
 [ext_resource type="Texture2D" uid="uid://c6c3eymade5kq" path="res://Assets/Scenes/Assets Generales/Background 1.png" id="1_6pygc"]
+[ext_resource type="Script" uid="uid://bngs4srjp8r8o" path="res://Assets/Scripts/Mapa/MapaCompleto.cs" id="1_nd5k8"]
 [ext_resource type="Texture2D" uid="uid://byafmpk53m3qi" path="res://Assets/Scenes/Assets Generales/PJ_Idle.png" id="2_5tii6"]
 [ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/Player.cs" id="2_ep2we"]
 [ext_resource type="Script" uid="uid://byrx8qvmnilf4" path="res://Assets/Scenes/Mapa/DamageZone.cs" id="2_nd5k8"]
@@ -8,7 +9,8 @@
 [ext_resource type="Script" uid="uid://cmup7u1ixnpue" path="res://Assets/Scripts/Minerales/PlomoPickup.cs" id="3_1iggp"]
 [ext_resource type="Script" uid="uid://cefv2j3odhkqi" path="res://Assets/Scripts/Minerales/PlataPickup.cs" id="4_hgu4y"]
 [ext_resource type="Script" uid="uid://cvs0cbcr85snf" path="res://Assets/Scripts/GasZone/area_2d.gd" id="7_hgu4y"]
-[ext_resource type="Texture2D" uid="uid://n21my7ao2jpt" path="res://Assets/Scenes/Assets Generales/objetossp.png" id="9_3i4hb"]
+[ext_resource type="Texture2D" uid="uid://buvd0saj70n0t" path="res://Assets/Scenes/Assets Generales/HUD assets.png" id="10_ys8wb"]
+[ext_resource type="Script" uid="uid://o1s2ylulcx3l" path="res://Assets/Scripts/Mapa/meta_zone.gd" id="11_ys8wb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5tii6"]
 texture = ExtResource("1_6pygc")
@@ -241,12 +243,6 @@ height = 14.156456
 [sub_resource type="CircleShape2D" id="CircleShape2D_ep2we"]
 radius = 15.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iggp"]
-bg_color = Color(0.5727102, 0.26229218, 0.25814936, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgu4y"]
-bg_color = Color(0.43782187, 0.62670094, 0.17443877, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00lxn"]
 size = Vector2(48, 48)
 
@@ -259,7 +255,23 @@ size = Vector2(128, 65)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ay3"]
 size = Vector2(48, 48)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iggp"]
+bg_color = Color(0.5727102, 0.26229218, 0.25814936, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hgu4y"]
+bg_color = Color(0.43782187, 0.62670094, 0.17443877, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i4hb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nd5k8"]
+bg_color = Color(0.25882354, 0.6666667, 0.68235296, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtf62"]
+size = Vector2(71, 65.5)
+
 [node name="Mapa" type="Node2D"]
+script = ExtResource("1_nd5k8")
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -591,7 +603,7 @@ shape = SubResource("CapsuleShape2D_1iggp")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(54, 0)
-zoom = Vector2(3.5, 3.5)
+zoom = Vector2(2.8, 2.8)
 
 [node name="Area2D" type="Area2D" parent="CharacterBody2D"]
 collision_mask = 12
@@ -608,21 +620,6 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HealthBar" type="ProgressBar" parent="CharacterBody2D"]
-layout_direction = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -13.0
-offset_top = -36.0
-offset_right = 203.66666
-offset_bottom = -13.0
-grow_horizontal = 2
-scale = Vector2(0.3, 0.3)
-theme_override_styles/background = SubResource("StyleBoxFlat_1iggp")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hgu4y")
-metadata/_edit_use_anchors_ = true
 
 [node name="EffectLabel" type="Label" parent="CharacterBody2D"]
 offset_left = -18.000004
@@ -656,6 +653,22 @@ shape = SubResource("RectangleShape2D_f0ay3")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
+layout_direction = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.1819762
+anchor_bottom = 0.14938273
+offset_left = -201.5
+offset_top = 14.0
+offset_right = 15.166626
+offset_bottom = 37.000008
+grow_horizontal = 2
+scale = Vector2(0.3, 0.3)
+theme_override_styles/background = SubResource("StyleBoxFlat_1iggp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hgu4y")
+metadata/_edit_use_anchors_ = true
+
 [node name="OxygenBar" type="ProgressBar" parent="HUD"]
 modulate = Color(0.5254902, 1, 1, 1)
 self_modulate = Color(0.5346826, 0.99866647, 0.9999998, 1)
@@ -664,17 +677,48 @@ anchor_left = 0.109000005
 anchor_top = 0.055000003
 anchor_right = 0.142
 anchor_bottom = 0.11100001
-offset_left = 291.789
-offset_top = -8.850001
-offset_right = 402.982
-offset_bottom = 3.0299969
+offset_left = -13.211002
+offset_top = 37.149998
+offset_right = 111.981995
+offset_bottom = 36.03
+theme_override_styles/background = SubResource("StyleBoxFlat_3i4hb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nd5k8")
 step = 0.001
 value = 100.0
 rounded = true
+show_percentage = false
 
 [node name="Sprite2D" type="Sprite2D" parent="HUD"]
-position = Vector2(314, 13)
-scale = Vector2(0.4999996, 0.5511364)
-texture = ExtResource("9_3i4hb")
+position = Vector2(19, 22.999998)
+scale = Vector2(0.35601157, 0.39242202)
+texture = ExtResource("10_ys8wb")
 region_enabled = true
-region_rect = Rect2(13, 14.5, 106, 88)
+region_rect = Rect2(15.710571, 157.32896, 111.868454, 103.65791)
+
+[node name="Sprite2D3" type="Sprite2D" parent="HUD"]
+position = Vector2(117.00001, 23)
+scale = Vector2(0.60015106, 0.39242202)
+texture = ExtResource("10_ys8wb")
+region_enabled = true
+region_rect = Rect2(27.091751, 93.802505, 289.93433, 67.64096)
+
+[node name="Sprite2D2" type="Sprite2D" parent="HUD"]
+position = Vector2(19, 59)
+scale = Vector2(0.35601157, 0.39242202)
+texture = ExtResource("10_ys8wb")
+region_enabled = true
+region_rect = Rect2(134.3949, 158.42387, 107.25003, 100.06581)
+
+[node name="Sprite2D4" type="Sprite2D" parent="HUD"]
+position = Vector2(108.1391, 58.000004)
+scale = Vector2(0.53882986, 0.39242202)
+texture = ExtResource("10_ys8wb")
+region_enabled = true
+region_rect = Rect2(27.091751, 93.802505, 289.93433, 67.64096)
+
+[node name="MetaZone" type="Area2D" parent="."]
+script = ExtResource("11_ys8wb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MetaZone"]
+position = Vector2(86.5, 399.75)
+shape = SubResource("RectangleShape2D_qtf62")

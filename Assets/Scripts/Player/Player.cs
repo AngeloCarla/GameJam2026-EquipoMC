@@ -21,7 +21,7 @@ public partial class Player : CharacterBody2D
 
 	// ── SALTO ──
 	[ExportGroup("Salto")]
-	[Export] private float jumpForce = -200f; // Fuerza de salto
+	[Export] private float jumpForce = -180f; // Fuerza de salto
 	[Export] private float runJumpMultiplier = 1.5f; // x1.5 mas alto el salto al correr
 	[Export] private float runJumpBoostX = 100f; // Impulso extra al saltar
 
@@ -81,11 +81,12 @@ public partial class Player : CharacterBody2D
 
 		// ── VIDA ──
 		currentHealth = maxHealth;
-		healthBar = GetNodeOrNull<ProgressBar>("HealthBar");
+		healthBar = GetNodeOrNull<ProgressBar>("../HUD/HealthBar");
 		if (healthBar != null)
 		{
 			healthBar.MaxValue = maxHealth;
 			healthBar.Value = currentHealth;
+			
 		}
 
 		UpdateHealthDisplay();
@@ -204,10 +205,10 @@ public partial class Player : CharacterBody2D
 			else if (currentInteractable is GasMaskFilter filter)
 				filter.Interact(this);
 
-            currentInteractable = null;
-            if (interactPrompt != null)
-                interactPrompt.Visible = false;
-        }
+			currentInteractable = null;
+			if (interactPrompt != null)
+				interactPrompt.Visible = false;
+		}
 	}
 
 	// ── FUNCIONES DEL RADAR ──
@@ -367,6 +368,7 @@ public partial class Player : CharacterBody2D
 		{
 			healthBar.Value = currentHealth;
 			healthBar.Modulate = currentHealth < 30 ? Colors.Red : Colors.Green;
+
 		}
 		GD.Print($"Vida actual: {currentHealth}/{maxHealth}");  // Consola siempre
 	}
@@ -447,5 +449,20 @@ public partial class Player : CharacterBody2D
 	public void SetOxygenDrainMultiplier(float multiplier)
 	{
 		oxygenDrainMultiplier = Mathf.Max(multiplier, 1f);
+	}
+		// ── SEÑAL DE DERROTA ──
+	[Signal]
+	public delegate void JugadorDerrotadoEventHandler();
+
+	private bool derrotadoEmitido = false;
+
+	public override void _Process(double delta)
+	{
+		if (!derrotadoEmitido && (currentHealth <= 0 || currentOxygen <= 0))
+		{
+			derrotadoEmitido = true;
+			GD.Print("Jugador derrotado, emitiendo señal");
+			EmitSignal(SignalName.JugadorDerrotado);
+		}
 	}
 }
