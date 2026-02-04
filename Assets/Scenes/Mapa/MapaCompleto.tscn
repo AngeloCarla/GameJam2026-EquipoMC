@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://ty76rn4yxvfo"]
+[gd_scene load_steps=40 format=4 uid="uid://ty76rn4yxvfo"]
 
 [ext_resource type="Texture2D" uid="uid://c6c3eymade5kq" path="res://Assets/Scenes/Assets Generales/Background 1.png" id="1_6pygc"]
 [ext_resource type="Texture2D" uid="uid://byafmpk53m3qi" path="res://Assets/Scenes/Assets Generales/PJ_Idle.png" id="2_5tii6"]
@@ -235,6 +235,9 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5k8"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxfgj"]
+size = Vector2(16.5, 16)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iggp"]
 radius = 3.3657303
 height = 14.156456
@@ -429,7 +432,7 @@ position = Vector2(184, 184)
 shape = SubResource("RectangleShape2D_nd5k8")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(312, 136)
+position = Vector2(264, 118)
 shape = SubResource("RectangleShape2D_nd5k8")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
@@ -471,6 +474,14 @@ shape = SubResource("RectangleShape2D_nd5k8")
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
 position = Vector2(282, 344)
 shape = SubResource("RectangleShape2D_nd5k8")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D/Mineral" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D3"]
+position = Vector2(313, 136)
+shape = SubResource("RectangleShape2D_bxfgj")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(13.000001, 218.00002)
