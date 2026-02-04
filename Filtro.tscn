@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cyh0jbflife63"]
 
-[ext_resource type="Texture2D" uid="uid://dpidipjw6sk08" path="res://objetossp.png" id="1_7j64c"]
+[ext_resource type="Texture2D" uid="uid://dx8b2h4f03lc4" path="res://objetossp.png" id="1_7j64c"]
 [ext_resource type="Script" uid="uid://bghyp6h1d242" path="res://filtro.gd" id="1_en64i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_en64i"]
-size = Vector2(6.25, 5)
+size = Vector2(5.25, 5)
 
 [node name="Items" type="Node2D"]
 script = ExtResource("1_en64i")
@@ -17,5 +17,5 @@ scale = Vector2(0.0708333, 0.16666667)
 texture = ExtResource("1_7j64c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Filtros"]
-position = Vector2(39.875, 20.5)
+position = Vector2(39.375, 20.5)
 shape = SubResource("RectangleShape2D_en64i")

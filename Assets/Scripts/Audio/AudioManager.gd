@@ -8,6 +8,6 @@ func _ready() -> void:
 	play()
 
 func audioGameOver():
+	stop()
 	stream = gameover
-	stream_paused = background
 	play()
