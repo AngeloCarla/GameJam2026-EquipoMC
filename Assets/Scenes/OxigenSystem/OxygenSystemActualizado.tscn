@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://do5rk8xbpwekh"]
+[gd_scene load_steps=14 format=3 uid="uid://do5rk8xbpwekh"]
 
 [ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/Player.cs" id="1_0ud13"]
 [ext_resource type="PackedScene" uid="uid://degvlt8gt8wac" path="res://Assets/Scenes/Minerales/mena.tscn" id="2_77lt2"]
 [ext_resource type="PackedScene" uid="uid://ccfisiwr3nmqw" path="res://Assets/Scenes/Minerales/plataPickup.tscn" id="3_6pmac"]
 [ext_resource type="PackedScene" uid="uid://b1hi806ifcw72" path="res://Assets/Scenes/Minerales/plomoPickup.tscn" id="4_oh2mw"]
+
 [ext_resource type="Script" uid="uid://cvs0cbcr85snf" path="res://Assets/Scripts/GasZone/area_2d.gd" id="5_60j1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
@@ -32,6 +33,7 @@ position = Vector2(573, 384)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(0, -62)
+scale = Vector2(0.5, 0.5)
 slide_on_ceiling = false
 script = ExtResource("1_0ud13")
 
@@ -103,16 +105,16 @@ position = Vector2(4, -31)
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="MenaPlata" parent="." instance=ExtResource("2_77lt2")]
-position = Vector2(-235, 21)
+position = Vector2(-507, 21)
 pickupScene = ExtResource("3_6pmac")
 
 [node name="MenaPlomo" parent="." instance=ExtResource("2_77lt2")]
-position = Vector2(289, 21)
+position = Vector2(-478, 21)
 pickupScene = ExtResource("4_oh2mw")
 tipoMineral = "plomo"
 
 [node name="GasZone" type="Area2D" parent="."]
-script = ExtResource("5_60j1w")
+script = ExtResource("5_hew45")
 
 [node name="ColorRect" type="ColorRect" parent="GasZone"]
 custom_minimum_size = Vector2(20, 20)
@@ -131,15 +133,25 @@ shape = SubResource("RectangleShape2D_58n3y")
 
 [node name="OxygenBar" type="ProgressBar" parent="HUD"]
 texture_filter = 2
-offset_left = 41.0
-offset_top = 230.0
-offset_right = 91.0
-offset_bottom = 430.0
+anchors_preset = -1
+anchor_left = 0.027139874
+anchor_top = 0.55185187
+anchor_right = -0.050104383
+anchor_bottom = 0.02962963
+offset_left = 72.0
+offset_top = 26.0
+offset_right = 122.0
+offset_bottom = 226.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_dtwtg")
 step = 0.001
 value = 100.0
+rounded = true
 fill_mode = 3
+show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="GasMaskFilter" parent="." instance=ExtResource("5_02ko1")]
+position = Vector2(127, 11)
 
 [connection signal="body_entered" from="GasZone" to="GasZone" method="_on_body_entered"]
 [connection signal="body_exited" from="GasZone" to="GasZone" method="_on_body_exited"]

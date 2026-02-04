@@ -13,16 +13,16 @@ public partial class PlayerMovement : CharacterBody2D
 	private ProgressBar OxygenBar;
 	
 	[ExportGroup("Movimiento")]
-	[Export] private float walkSpeed = 300f; // Velocidad normal
-	[Export] private float runSpeed = 600f; // Velocidad corriendo
+	[Export] private float walkSpeed = 10f; // Velocidad normal
+	[Export] private float runSpeed = 5f; // Velocidad corriendo
 
 	[ExportGroup("Salto")]
-	[Export] private float jumpForce = -500f; // Fuerza de salto
+	[Export] private float jumpForce = -10f; // Fuerza de salto
 	[Export] private float runJumpMultiplier = 1.5f; // x1.5 mas alto el salto al correr
-	[Export] private float runJumpBoostX = 200f; // Impulso extra al saltar
+	[Export] private float runJumpBoostX = 10f; // Impulso extra al saltar
 
 	[ExportGroup("Fisica")]
-	[Export] private float gravity = 1200f; // Gravedad
+	[Export] private float gravity = 3f; // Gravedad
 	
 	public override void _Ready()
 	{

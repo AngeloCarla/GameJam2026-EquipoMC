@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GasMaskFilterNose : CollisionShape2D
+public partial class GasMaskFilter : StaticBody2D
 {
 	[Export] private float oxygenAmount = 10f;
 
