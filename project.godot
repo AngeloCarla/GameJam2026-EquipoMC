@@ -12,8 +12,12 @@ config_version=5
 
 config/name="GGJ2026"
 run/main_scene="uid://ty76rn4yxvfo"
-config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioManager="*res://Assets/Scripts/Audio/AudioManager.gd"
 
 [display]
 
@@ -26,6 +30,10 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="GGJ2026"
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [global_group]
 
