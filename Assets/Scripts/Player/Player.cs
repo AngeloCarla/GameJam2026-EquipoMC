@@ -51,7 +51,11 @@ public partial class Player : CharacterBody2D
 	// ── TESTEO ──
 	private Color originalModulate = Colors.White; // Color original
 
-	public override void _Ready()
+    // ── ANIMACIONES ──
+    private AnimationPlayer animationPlayer;
+    private Sprite2D sprite2D;
+
+    public override void _Ready()
 	{
 		currentOxygen = maxOxygen;
 
@@ -97,6 +101,10 @@ public partial class Player : CharacterBody2D
 		var visual = GetNodeOrNull<ColorRect>("ColorRect");
 		if (visual != null)
 			originalModulate = visual.Modulate;  // Guarda el color
+
+        // ── ANIMACIONES ──
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		sprite2D = GetNode<Sprite2D>("Sprite2D");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -204,7 +212,10 @@ public partial class Player : CharacterBody2D
 			else if (currentInteractable is GasMaskFilter filter)
 				filter.Interact(this);
 		}
-	}
+
+        // ── ANIMACIONES ──
+        UpdateAnimations(dir.X);
+    }
 
 	// ── FUNCIONES DEL RADAR ──
 	private void OnRadarEnter(Node2D body)
@@ -394,8 +405,11 @@ public partial class Player : CharacterBody2D
 		isDead = true;
 		isDeadVisual = true;
 
-		// Cambio de color
-		var visual = GetNodeOrNull<ColorRect>("ColorRect");
+        // Sonido game over
+        GetNode("/root/AudioManager").Call("audioGameOver");
+
+        // Cambio de color
+        var visual = GetNodeOrNull<ColorRect>("ColorRect");
 		if (visual != null)
 		{
 			visual.Modulate = Colors.DarkRed;  // Rojo oscuro fijo
@@ -407,6 +421,8 @@ public partial class Player : CharacterBody2D
 			healthBar.Modulate = Colors.DarkRed;
 			healthBar.Value = 0;
 		}
+
+
 	}
 
 	private void ResetPlayer()
@@ -445,4 +461,32 @@ public partial class Player : CharacterBody2D
 	{
 		oxygenDrainMultiplier = Mathf.Max(multiplier, 1f);
 	}
+
+    //Control de animaciones
+    private void UpdateAnimations(float direction)
+    {
+        // 1. Voltear el sprite según la dirección
+        if (direction > 0)
+        {
+            sprite2D.FlipH = false;
+        }
+        else if (direction < 0)
+        {
+            sprite2D.FlipH = true;
+        }
+
+        // 2. Controlar qué animación reproducir
+        if (IsOnFloor())
+        {
+            // Si está en el suelo
+            if (Mathf.Abs(direction) > 0)
+            {
+                animationPlayer.Play("walk");
+            }
+            else
+            {
+                animationPlayer.Play("idle");
+            }
+        }
+    }
 }
