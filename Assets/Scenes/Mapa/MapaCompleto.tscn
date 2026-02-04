@@ -1,12 +1,10 @@
 [gd_scene load_steps=45 format=4 uid="uid://ty76rn4yxvfo"]
-
 [ext_resource type="Texture2D" uid="uid://c6c3eymade5kq" path="res://Assets/Scenes/Assets Generales/Background 1.png" id="1_6pygc"]
 [ext_resource type="Texture2D" uid="uid://byafmpk53m3qi" path="res://Assets/Scenes/Assets Generales/PJ_Idle.png" id="2_5tii6"]
 [ext_resource type="Script" uid="uid://dr2sjt32s3qax" path="res://Assets/Scripts/Player/Player.cs" id="2_ep2we"]
 [ext_resource type="Script" uid="uid://byrx8qvmnilf4" path="res://Assets/Scenes/Mapa/DamageZone.cs" id="2_nd5k8"]
 [ext_resource type="Script" uid="uid://b1i4suskv2cma" path="res://Assets/Scripts/Minerales/Mena.cs" id="2_wtbic"]
 [ext_resource type="Script" uid="uid://cmup7u1ixnpue" path="res://Assets/Scripts/Minerales/PlomoPickup.cs" id="3_1iggp"]
-[ext_resource type="Script" uid="uid://dqhbg405miiyh" path="res://Assets/Scenes/Mapa/GasMaskFilter.cs" id="4_00lxn"]
 [ext_resource type="Script" uid="uid://cefv2j3odhkqi" path="res://Assets/Scripts/Minerales/PlataPickup.cs" id="4_hgu4y"]
 [ext_resource type="Script" uid="uid://cvs0cbcr85snf" path="res://Assets/Scripts/GasZone/area_2d.gd" id="7_hgu4y"]
 [ext_resource type="Texture2D" uid="uid://n21my7ao2jpt" path="res://Assets/Scenes/Assets Generales/objetossp.png" id="9_3i4hb"]
@@ -231,11 +229,11 @@ texture = ExtResource("1_6pygc")
 [sub_resource type="TileSet" id="TileSet_1iggp"]
 sources/0 = SubResource("TileSetAtlasSource_5fl4u")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i4hb"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxfgj"]
+size = Vector2(16.5625, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nd5k8"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i4hb"]
+size = Vector2(15, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1iggp"]
 radius = 3.3657303
@@ -512,131 +510,234 @@ tile_set = SubResource("TileSet_1iggp")
 script = ExtResource("2_wtbic")
 tipoMineral = ""
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Mineral" groups=["interactable"]]
-collision_layer = 8
-script = ExtResource("3_1iggp")
+[node name="Plata" type="Node2D" parent="Node2D/Mineral"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(248, 216)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(281, 104)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(168, 72)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(346, 56)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(488, 328)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(602, 137)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(810, 166)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(790, 183)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(534, 439)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(361, 136)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D"]
-position = Vector2(361, 152)
-shape = SubResource("RectangleShape2D_3i4hb")
-script = ExtResource("4_00lxn")
-oxygenAmount = null
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D/Mineral" groups=["interactable"]]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
 collision_layer = 8
 script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(24, 56)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D3"]
+position = Vector2(313, 136)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(184, 184)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="StaticBody2D4" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(312, 136)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D4"]
+position = Vector2(184.125, 184)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(392, 120)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="StaticBody2D5" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(345, 42)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D5"]
+position = Vector2(345, 39)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(506, 25)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="StaticBody2D6" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D6"]
+position = Vector2(504, 24)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D7"]
+position = Vector2(23, 55)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D8"]
+position = Vector2(855.71875, -24)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D9"]
+position = Vector2(808, 201)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D10"]
+position = Vector2(632, 152)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D11"]
 position = Vector2(601, 168)
-shape = SubResource("RectangleShape2D_nd5k8")
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(631, 152)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="StaticBody2D12" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(857, -23)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D12"]
+position = Vector2(664, 424)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(809, 200)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="StaticBody2D13" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(665, 425)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D13"]
+position = Vector2(440, 312)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(441, 312)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="StaticBody2D14" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Node2D/Mineral/StaticBody2D2"]
-position = Vector2(282, 344)
-shape = SubResource("RectangleShape2D_nd5k8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D14"]
+position = Vector2(280, 343)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Node2D/Mineral/Plata" groups=["interactable"]]
+collision_layer = 8
+script = ExtResource("4_hgu4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plata/StaticBody2D15"]
+position = Vector2(392.4375, 120)
+shape = SubResource("RectangleShape2D_bxfgj")
+debug_color = Color(0.6873632, 0.39284554, 0.79607016, 0.41960785)
+
+[node name="Plomo" type="Node2D" parent="Node2D/Mineral"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D"]
+position = Vector2(248.5, 216)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D2"]
+position = Vector2(169, 72)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D3"]
+position = Vector2(281, 104)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D4"]
+position = Vector2(345, 55)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D5"]
+position = Vector2(361, 136)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D6"]
+position = Vector2(361, 153)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D7"]
+position = Vector2(601, 136)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D8"]
+position = Vector2(841, -24)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D9"]
+position = Vector2(809, 168)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D10"]
+position = Vector2(792, 185)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D11"]
+position = Vector2(537, 440)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Node2D/Mineral/Plomo" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("3_1iggp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Mineral/Plomo/StaticBody2D12"]
+position = Vector2(489, 327)
+shape = SubResource("RectangleShape2D_3i4hb")
+debug_color = Color(0.5946873, 0.54656714, 0.05496957, 0.41960785)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(13.000001, 220.00002)
