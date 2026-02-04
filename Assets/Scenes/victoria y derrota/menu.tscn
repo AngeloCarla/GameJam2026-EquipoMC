@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xh5p7buxoj6u"]
+[gd_scene load_steps=3 format=3 uid="uid://xh5p7buxoj6u"]
 
-[ext_resource type="Script" uid="uid://bfmbbmiden7da" path="res://menu.gd" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://bfmbbmiden7da" path="res://Assets/Scenes/victoria y derrota/menu.gd" id="1_lti8b"]
+[ext_resource type="Texture2D" uid="uid://be40lld3df7lm" path="res://menu principal.png" id="2_j6tdh"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -58,6 +59,13 @@ text = "OPCIONES"
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "SALIR"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(232.99998, 137)
+scale = Vector2(0.71744776, 0.7174479)
+texture = ExtResource("2_j6tdh")
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Opciones" to="." method="_on_opciones_pressed"]
